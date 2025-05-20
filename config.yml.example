@@ -1,0 +1,58 @@
+# Whether to show the debug output of langchain.
+debug: false
+
+# The microservice project location that you want to analyze.
+project_location: "path/to/microservice/project"
+
+# If a config center is in the project, specify it.
+# Please use identifier of config center service in the deployment file.
+config_center_name: config
+# Fill in the relative path of your specified project root directory.
+config_center_dir: ./config
+
+# Chat model configuration.
+chat_model:
+  type: "openai"  # "openai", "anthropic", "google" are supported.
+  model: "gpt-4o-mini"
+  base_url: "https://xxx/v1"
+  api_key: "sk-"
+  temperature: 0.0
+
+# OpenAI Embedding model configuration.
+openai_embedding:
+  model: "text-embedding-ada-002"
+  base_url: "https://xxx/v1"
+  api_key: "sk-"
+
+# Vector Database configuration.
+# Currently, Milvus and Chroma are supported.
+vector_db:
+  # Milvus configuration.
+  # Only `db_type`, `connection_type`, `connection_uri` are mandatory.
+  db_type: "milvus"
+  connection_type: "local"
+  collection_name: "test"
+  connection_uri: "./test.db"
+
+  # Chroma configuration.
+  #db_type: "chroma"
+  #connection_type: "local"
+
+# Neo4j configuration.
+neo4j:
+  # Connection URI (Required)
+  uri: "neo4j://example.org:7687"
+  # Authentication type (Required). Available values: "basic", "kerberos" and "bearer"
+  auth_type: "basic"
+  # This field is optional, default will connect "neo4j" database.
+  database: "neo4j"
+
+  # Options for "basic"
+  username: "username"
+  password: "password"
+
+  # Options for "kerberos"
+  kerberos_ticket: "base64_encoded_ticket"
+
+  # Options for "bearer"
+  bearer_token: "base64_encoded_token"
